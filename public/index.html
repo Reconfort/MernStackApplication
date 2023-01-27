@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mongo tester</title>
+</head>
+<body>
+    <h1>Hello mongo</h1>
+    <div>
+        <!-- <form action=""> -->
+            <input type="text" name="user" value="Dany">
+            <button class="btn1">Add user</button>
+        <!-- </form> -->
+
+    </div>
+    <script>
+        const input1 = document.querySelector('input[name="user"]');
+        const btn1 = document.querySelector('.btn1');
+        const endPoint = '/users';
+
+        btn1.addEventListener('click',()=>{
+            console.log('Post')
+            const data = {name:input1.value};
+            console.log(data)
+            fetch(endPoint,{
+                method:'post',
+                body:JSON.stringify(data),
+                headers:{
+                   'Content-Type': 'application/json'
+                }
+            }).then(res => res.json()).then(data => console.log(data));
+        })
+    </script>
+</body>
+</html>
